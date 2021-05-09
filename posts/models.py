@@ -10,7 +10,7 @@ class Post(models.Model):
         'Дата публикации', auto_now_add=True
     )
     author = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name='posts'
+        User, on_delete=models.CASCADE, related_name='posts', null=False
     )
     image = models.ImageField(
         upload_to='posts/', null=True, blank=True
@@ -21,6 +21,7 @@ class Post(models.Model):
 
 
 class Comment(models.Model):
+    objects = None
     author = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name='comments'
     )
